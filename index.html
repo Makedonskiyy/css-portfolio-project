@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Алекс Кодов — Junior Frontend Developer</title>
+  <meta name="description" content="Портфолио начинающего frontend-разработчика: проекты, навыки и путь в профессию.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- 🎯 ТЕМА 6 (Шрифты): шрифты подключаем через @font-face в css/06-fonts.css.
+       preload ускоряет загрузку главного шрифта — включим на занятии про шрифты. -->
+  <!-- <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin> -->
+
+  <!-- 🎯 ТЕМА 1 (Синтаксис): подключаем ОДИН файл style.css.
+       Внутри него через @import собраны 17 модулей из папки css/ — по одному на тему. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- 🎯 ТЕМА 4 (CSS-переменные): палитра, отступы и радиусы живут в :root (css/04-variables.css).
+     Здесь, на <body>, увидим, как переменные «раздаются» всей странице. -->
+<body>
+
+  <!-- 🎯 ТЕМА 7 (Псевдоклассы): ссылка «Перейти к содержимому» видна только по :focus-visible (клавиша Tab).
+       ТЕМА 12 (Позиционирование): по умолчанию уведена за экран через position: absolute. -->
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <!-- 🎯 ТЕМА 12 (Позиционирование): липкая шапка — position: sticky + z-index;
+       выпадающее меню на телефоне — position: absolute относительно шапки.
+       ТЕМА 10 (Flexbox): логотип слева, меню по центру, кнопка справа (на телефоне — бургер).
+       ТЕМА 14 (Фильтры): backdrop-filter: blur() — «матовое стекло» под шапкой.
+       ТЕМА 7 (Псевдоклассы): :hover, [aria-current], а меню открывается через :checked
+       (скрытый чекбокс + label, JavaScript не нужен). -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="#top" aria-label="Алекс Кодов — на главную">Алекс Кодов<span class="logo__dot" aria-hidden="true"></span></a>
+
+      <input class="menu-toggle" type="checkbox" id="menu-toggle" aria-label="Открыть меню">
+      <label class="menu-btn" for="menu-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
+
+      <nav class="nav" aria-label="Основное меню">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="#about" aria-current="page">Обо мне</a></li>
+          <li class="nav__item"><a class="nav__link" href="#skills">Навыки</a></li>
+          <li class="nav__item"><a class="nav__link" href="#projects">Проекты</a></li>
+          <li class="nav__item"><a class="nav__link" href="#journey">Путь</a></li>
+          <li class="nav__item nav__item--mobile"><a class="nav__link" href="#contact">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--primary site-header__cta" href="#contact">Связаться</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ═════════════════════════ HERO ═════════════════════════ -->
+    <!-- 🎯 ТЕМА 3 (Единицы): высота первого экрана через svh, отступы в rem, заголовок на clamp().
+         ТЕМА 11 (Grid): две колонки — текст и портрет; на телефоне одна.
+         ТЕМА 13 (Градиенты): мягкое «сияние» на фоне — несколько radial-gradient. -->
+    <section class="hero" id="top">
+      <div class="container hero__inner">
+
+        <div class="hero__content">
+          <!-- 🎯 ТЕМА 7 (Псевдоэлементы): ::before рисует точку-индикатор.
+               ТЕМА 17 (Анимация): точка «пульсирует» через @keyframes. -->
+          <p class="hero__badge">Открыт к предложениям</p>
+
+          <!-- 🎯 ТЕМА 5 (Стили текста): font-size через clamp(), line-height, letter-spacing, text-wrap: balance.
+               ТЕМА 6 (Шрифты): заголовочный шрифт Unbounded.
+               ТЕМА 13 (Градиенты): span.hero__accent — «маркер» под словами через linear-gradient в background. -->
+          <h1 class="hero__title">
+            Делаю <span class="hero__accent">чистый</span> и&nbsp;быстрый интерфейс
+          </h1>
+
+          <p class="hero__lead">
+            Привет, я Алекс — junior frontend-разработчик. Верстаю на HTML и CSS и люблю
+            страницы, которые одинаково хорошо выглядят на телефоне и на большом мониторе.
+          </p>
+
+          <!-- 🎯 ТЕМА 10 (Flexbox): ряд кнопок — gap, flex-wrap.
+               ТЕМА 13 (Тени и градиенты) + ТЕМА 16 (Transition): кнопка с градиентом, тенью и плавным hover. -->
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#projects">Смотреть проекты</a>
+            <a class="btn btn--ghost" href="#contact">Написать мне</a>
+          </div>
+        </div>
+
+        <!-- 🎯 ТЕМА 8 (Изображения): портрет — aspect-ratio: 4 / 5, object-fit: cover, border-radius.
+             ТЕМА 12 (Позиционирование): плашки поверх фото — position: absolute внутри position: relative.
+             ТЕМА 13 (Тени): мягкая тень. ТЕМА 14 (Фильтры): backdrop-filter на плашках.
+             ТЕМА 15 (Трансформации): лёгкий rotate у плашек.
+             ТЕМА 17 (Анимация): плашки «парят» — @keyframes с translate. -->
+        <figure class="hero__visual">
+          <img class="portrait" src="assets/img/portrait.webp" width="1000" height="1250"
+               alt="Место для вашего портрета: заменить на своё фото">
+          <span class="chip chip--code">&lt;html&gt;</span>
+          <span class="chip chip--css">{ css }</span>
+        </figure>
+
+        <!-- 🎯 ТЕМА 11 (Grid): три равные колонки — grid-template-columns: repeat(3, 1fr).
+             ТЕМА 2 (Блочная модель): border-top и padding у каждого блока. -->
+        <ul class="hero__stats">
+          <li class="stat"><span class="stat__num">12</span><span class="stat__label">учебных проектов</span></li>
+          <li class="stat"><span class="stat__num">2</span><span class="stat__label">технологии: HTML и CSS</span></li>
+          <li class="stat"><span class="stat__num">100%</span><span class="stat__label">адаптивной вёрстки</span></li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ═════════════════════════ ABOUT ═════════════════════════ -->
+    <!-- 🎯 ТЕМА 2 (Блочная модель): box-sizing, padding секции, margin между блоками, схлопывание margin.
+         ТЕМА 11 (Grid): колонки «фото + текст» (grid-template-columns: 5fr 7fr). -->
+    <section class="section about" id="about">
+      <div class="container">
+        <p class="eyebrow">01 — Обо мне</p>
+        <h2 class="section__title">Люблю превращать идеи в страницы</h2>
+
+        <div class="about__grid">
+
+          <!-- 🎯 ТЕМА 8 (Изображения): aspect-ratio: 4 / 5 + object-fit: cover.
+               ТЕМА 14 (Фильтры): grayscale() по умолчанию, цвет возвращается по :hover.
+               ТЕМА 15 (Трансформации): scale() при наведении, overflow: hidden у рамки. -->
+          <figure class="about__photo">
+            <img src="assets/img/about-photo.webp" width="1000" height="1250" loading="lazy"
+                 alt="Редактор кода с CSS-стилями для первого экрана">
+          </figure>
+
+          <div class="about__text">
+            <!-- 🎯 ТЕМА 5 (Стили текста): ширина строки (max-width в ch), line-height, отступы между абзацами. -->
+            <p class="about__lead">
+              Учусь на frontend-курсе, где мы шаг за шагом собираем настоящий проект:
+              от семантической разметки до анимаций.
+            </p>
+            <p>
+              Мне нравится, когда код читается как текст, а интерфейс не мешает человеку
+              делать своё дело. Сейчас ищу первую стажировку или небольшой проект, где можно
+              расти рядом с командой и приносить пользу с первого дня.
+            </p>
+
+            <!-- 🎯 ТЕМА 2 (Блочная модель): строки «термин — значение» с border-top и padding.
+                 ТЕМА 11 (Grid): сетка «подпись | значение».
+                 ТЕМА 7 (Псевдоклассы): :last-child убирает нижнюю линию. -->
+            <dl class="facts">
+              <div class="facts__item"><dt>Город</dt><dd>Москва, удалённо</dd></div>
+              <div class="facts__item"><dt>Фокус</dt><dd>Frontend, UI-вёрстка</dd></div>
+              <div class="facts__item"><dt>Уровень</dt><dd>Junior</dd></div>
+              <div class="facts__item"><dt>Языки</dt><dd>Русский, English B1</dd></div>
+            </dl>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════════════════════ SKILLS ═════════════════════════ -->
+    <section class="section skills" id="skills">
+      <div class="container">
+        <p class="eyebrow">02 — Навыки</p>
+        <h2 class="section__title">Чем я пользуюсь каждый день</h2>
+
+        <!-- 🎯 ТЕМА 11 (Grid): адаптивная сетка без media-запросов — repeat(auto-fit, minmax(18rem, 1fr)).
+             ТЕМА 7 (Псевдоэлементы): номер «01», «02»… через счётчик и ::before.
+             ТЕМА 4 (CSS-переменные): цвета и размеры берём из переменных.
+             ТЕМА 7 (Псевдоклассы): :hover на блоке, :has() — подсветка, когда наведён тег внутри.
+             ТЕМА 16 (Transition): плавность. -->
+        <ul class="skill-grid">
+          <li class="skill-card">
+            <h3 class="skill-card__title">HTML</h3>
+            <p class="skill-card__text">Семантическая разметка, доступность, формы, мета-теги и основы SEO.</p>
+            <ul class="tags" aria-label="Темы HTML">
+              <li class="tag">семантика</li><li class="tag">a11y</li><li class="tag">формы</li>
+            </ul>
+          </li>
+          <li class="skill-card">
+            <h3 class="skill-card__title">CSS</h3>
+            <p class="skill-card__text">Flexbox, Grid, переменные, анимации и современные возможности языка.</p>
+            <ul class="tags" aria-label="Темы CSS">
+              <li class="tag">flexbox</li><li class="tag">grid</li><li class="tag">oklch</li>
+            </ul>
+          </li>
+          <li class="skill-card">
+            <h3 class="skill-card__title">Адаптивность</h3>
+            <p class="skill-card__text">Mobile first, fluid-типографика, единицы rem и svh, контейнерные запросы.</p>
+            <ul class="tags" aria-label="Темы адаптивности">
+              <li class="tag">mobile first</li><li class="tag">clamp()</li><li class="tag">@container</li>
+            </ul>
+          </li>
+          <li class="skill-card">
+            <h3 class="skill-card__title">Git и GitHub</h3>
+            <p class="skill-card__text">Ветки, коммиты, pull request и публикация проекта на GitHub Pages.</p>
+            <ul class="tags" aria-label="Темы Git">
+              <li class="tag">branch</li><li class="tag">PR</li><li class="tag">Pages</li>
+            </ul>
+          </li>
+          <li class="skill-card">
+            <h3 class="skill-card__title">Анимации</h3>
+            <p class="skill-card__text">Transition, keyframes и аккуратные микровзаимодействия без лишнего шума.</p>
+            <ul class="tags" aria-label="Темы анимации">
+              <li class="tag">transition</li><li class="tag">keyframes</li><li class="tag">transform</li>
+            </ul>
+          </li>
+          <li class="skill-card">
+            <h3 class="skill-card__title">Дизайн в вебе</h3>
+            <p class="skill-card__text">Цвет, типографика, сетка и ритм: перевожу макеты Figma в код.</p>
+            <ul class="tags" aria-label="Темы дизайна">
+              <li class="tag">Figma</li><li class="tag">палитры</li><li class="tag">ритм</li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- 🎯 ТЕМА 17 (Анимация): «бегущая строка» — @keyframes с translateX и infinite linear.
+             ТЕМА 10 (Flexbox): дорожка элементов в один ряд, flex-shrink: 0.
+             ТЕМА 14 (Маски): края плавно исчезают через mask-image: linear-gradient(...). -->
+        <div class="marquee" aria-hidden="true">
+          <ul class="marquee__track">
+            <li>HTML5</li><li>CSS3</li><li>Flexbox</li><li>Grid</li><li>oklch</li><li>Git</li><li>Figma</li><li>a11y</li>
+            <li>HTML5</li><li>CSS3</li><li>Flexbox</li><li>Grid</li><li>oklch</li><li>Git</li><li>Figma</li><li>a11y</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════════════════════ PROJECTS ═════════════════════════ -->
+    <section class="section projects" id="projects">
+      <div class="container">
+        <p class="eyebrow">03 — Проекты</p>
+        <h2 class="section__title">Избранные работы</h2>
+        <p class="section__lead">Шесть проектов из курса. Обложки специально разных пропорций — так мы научимся делать ровную сетку.</p>
+
+        <!-- 🎯 ТЕМА 11 (Grid): сетка проектов — 2 колонки на десктопе, 1 на телефоне;
+             первая и последняя карточки — «главные»: grid-column: 1 / -1 (на всю ширину). -->
+        <div class="project-grid">
+
+          <!-- 🎯 ТЕМА 8 (Изображения): шесть обложек разных пропорций (16:9, 1:1, 4:3, 4:5, 16:10, 16:9).
+               Задача: выровнять их одинаковым aspect-ratio + object-fit: cover.
+               ТЕМА 14 (Фильтры): saturate/brightness → на :hover возвращаем цвет.
+               ТЕМА 15 (Трансформации): scale(1.05) у картинки внутри рамки с overflow: hidden.
+               ТЕМА 16 (Transition): transition на scale и filter.
+               ТЕМА 2 (Блочная модель): border-radius обложки, отступы текста. ТЕМА 13 (Тени): тень обложки. -->
+          <article class="project-card project-card--featured">
+            <a class="project-card__media" href="#" aria-label="Открыть проект «Дашборд аналитики»">
+              <img src="assets/img/project-1.webp" width="1600" height="900" loading="lazy"
+                   alt="Интерфейс аналитического дашборда с графиком">
+            </a>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Дашборд аналитики</h3>
+              <p class="project-card__text">Адаптивная панель с карточками метрик и графиком. Вся вёрстка — на Grid и Flexbox.</p>
+              <ul class="tags"><li class="tag">Grid</li><li class="tag">oklch</li><li class="tag">dark mode</li></ul>
+              <a class="project-card__link" href="#">Смотреть проект <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a class="project-card__media" href="#" aria-label="Открыть проект «Мини-магазин»">
+              <img src="assets/img/project-2.webp" width="1200" height="1200" loading="lazy"
+                   alt="Каталог интернет-магазина из четырёх карточек товаров">
+            </a>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Мини-магазин</h3>
+              <p class="project-card__text">Каталог товаров с карточками и аккуратными hover-эффектами.</p>
+              <ul class="tags"><li class="tag">Flexbox</li><li class="tag">hover</li></ul>
+              <a class="project-card__link" href="#">Смотреть проект <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a class="project-card__media" href="#" aria-label="Открыть проект «Блог о путешествиях»">
+              <img src="assets/img/project-3.webp" width="1200" height="900" loading="lazy"
+                   alt="Страница блога с крупной обложкой и текстом статьи">
+            </a>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Блог о путешествиях</h3>
+              <p class="project-card__text">Читаемая типографика, удобная ширина строки и красивые цитаты.</p>
+              <ul class="tags"><li class="tag">типографика</li><li class="tag">шрифты</li></ul>
+              <a class="project-card__link" href="#">Смотреть проект <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a class="project-card__media" href="#" aria-label="Открыть проект «Список дел»">
+              <img src="assets/img/project-4.webp" width="1000" height="1250" loading="lazy"
+                   alt="Мобильное приложение со списком задач">
+            </a>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Список дел</h3>
+              <p class="project-card__text">Мобильный интерфейс с аккуратными формами и состояниями.</p>
+              <ul class="tags"><li class="tag">формы</li><li class="tag">:checked</li></ul>
+              <a class="project-card__link" href="#">Смотреть проект <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a class="project-card__media" href="#" aria-label="Открыть проект «Лендинг студии»">
+              <img src="assets/img/project-5.webp" width="1600" height="1000" loading="lazy"
+                   alt="Лендинг с крупным заголовком, кнопкой и яркой иллюстрацией">
+            </a>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Лендинг студии</h3>
+              <p class="project-card__text">Яркий первый экран с градиентами, тенями и анимацией появления.</p>
+              <ul class="tags"><li class="tag">градиенты</li><li class="tag">анимация</li></ul>
+              <a class="project-card__link" href="#">Смотреть проект <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="project-card project-card--featured">
+            <a class="project-card__media" href="#" aria-label="Открыть проект «Игровая статистика»">
+              <img src="assets/img/project-6.webp" width="1600" height="900" loading="lazy"
+                   alt="Игровая статистика с кольцом прогресса и шкалами">
+            </a>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Игровая статистика</h3>
+              <p class="project-card__text">Тёмная панель игрока с неоновыми акцентами и плавными переходами.</p>
+              <ul class="tags"><li class="tag">transition</li><li class="tag">transform</li></ul>
+              <a class="project-card__link" href="#">Смотреть проект <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════════════════════ JOURNEY ═════════════════════════ -->
+    <section class="section journey" id="journey">
+      <div class="container journey__grid">
+
+        <!-- 🎯 ТЕМА 12 (Позиционирование): заголовок слева «прилипает» при прокрутке — position: sticky; top: …
+             ТЕМА 11 (Grid): две колонки «заголовок | шаги». -->
+        <div class="journey__head">
+          <p class="eyebrow">04 — Путь</p>
+          <h2 class="section__title">Как я пришёл в разработку</h2>
+        </div>
+
+        <!-- 🎯 ТЕМА 12 (Позиционирование): вертикальная линия — position: absolute у ol::before;
+             точки на линии — position: absolute у каждого li::before.
+             ТЕМА 7 (Псевдоэлементы): ::before для линии и точек;
+             ТЕМА 7 (Псевдоклассы): :last-child, :nth-child(even) — разные акценты.
+             ТЕМА 17 (Анимация): точка последнего шага «пульсирует».
+             ТЕМА 2 (Блочная модель): padding-left под линию, margin-bottom между шагами. -->
+        <ol class="timeline">
+          <li class="timeline__item">
+            <time class="timeline__date" datetime="2025-09">Сентябрь 2025</time>
+            <h3 class="timeline__title">Первая строка кода</h3>
+            <p class="timeline__text">Начал изучать HTML и сделал страницу-визитку. Понял, что вёрстка — это моё.</p>
+          </li>
+          <li class="timeline__item">
+            <time class="timeline__date" datetime="2026-01">Январь 2026</time>
+            <h3 class="timeline__title">Курс по frontend</h3>
+            <p class="timeline__text">Освоил Git, семантику и основы адаптивной вёрстки. Выложил первые работы на GitHub.</p>
+          </li>
+          <li class="timeline__item">
+            <time class="timeline__date" datetime="2026-05">Май 2026</time>
+            <h3 class="timeline__title">Современный CSS</h3>
+            <p class="timeline__text">Flexbox, Grid, переменные, анимации. Собрал это портфолио на двух технологиях.</p>
+          </li>
+          <li class="timeline__item timeline__item--now">
+            <time class="timeline__date" datetime="2026-10">Сейчас</time>
+            <h3 class="timeline__title">Ищу первую стажировку</h3>
+            <p class="timeline__text">Готов к тестовым заданиям и собеседованиям. Пишите — отвечу в течение дня.</p>
+          </li>
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- ═════════════════════════ CONTACT ═════════════════════════ -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <p class="eyebrow">05 — Контакты</p>
+        <h2 class="section__title">Давайте работать вместе</h2>
+
+        <div class="contact__grid">
+
+          <!-- 🎯 ТЕМА 10 (Flexbox): колонка контактов — flex-direction: column и gap. -->
+          <aside class="contact__info">
+            <p class="contact__text">Расскажите о задаче или просто поздоровайтесь. Отвечаю в течение дня.</p>
+            <ul class="contact__list">
+              <li><a href="mailto:hello@alexcodov.dev">hello@alexcodov.dev</a></li>
+              <li><a href="https://github.com/" target="_blank" rel="noopener">github.com/alexcodov</a></li>
+              <li><a href="https://t.me/" target="_blank" rel="noopener">t.me/alexcodov</a></li>
+            </ul>
+          </aside>
+
+          <!-- 🎯 ТЕМА 9 (Стилизация форм): поля, select, radio, textarea, checkbox и кнопка.
+               Что делаем: убираем стандартный вид (appearance), задаём padding, border, radius,
+               accent-color для флажков, resize для textarea, цвет placeholder.
+               ТЕМА 7 (Псевдоклассы): :focus-visible, :user-invalid, :checked, :has(); ::placeholder.
+               ТЕМА 16 (Transition): плавная подсветка рамки при фокусе. -->
+          <form class="form" action="#" method="post">
+            <div class="form__row">
+              <div class="field">
+                <label class="field__label" for="name">Имя</label>
+                <input class="field__control" id="name" name="name" type="text" placeholder="Как к вам обращаться" required>
+              </div>
+              <div class="field">
+                <label class="field__label" for="email">Email</label>
+                <input class="field__control" id="email" name="email" type="email" placeholder="you@example.com" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="topic">Тема обращения</label>
+              <select class="field__control" id="topic" name="topic">
+                <option>Вакансия или стажировка</option>
+                <option>Небольшой проект</option>
+                <option>Просто поздороваться</option>
+              </select>
+            </div>
+
+            <fieldset class="field field--choices">
+              <legend class="field__label">Как удобнее связаться</legend>
+              <label class="choice"><input type="radio" name="channel" value="email" checked> <span>Email</span></label>
+              <label class="choice"><input type="radio" name="channel" value="telegram"> <span>Telegram</span></label>
+              <label class="choice"><input type="radio" name="channel" value="call"> <span>Звонок</span></label>
+            </fieldset>
+
+            <div class="field">
+              <label class="field__label" for="message">Сообщение</label>
+              <textarea class="field__control" id="message" name="message" rows="5" placeholder="Расскажите коротко о задаче"></textarea>
+            </div>
+
+            <label class="choice choice--consent">
+              <input type="checkbox" name="consent" required>
+              <span>Согласен на обработку данных</span>
+            </label>
+
+            <button class="btn btn--primary form__submit" type="submit">Отправить сообщение</button>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 🎯 ТЕМА 10 (Flexbox): подвал — justify-content: space-between, flex-wrap для телефона.
+       ТЕМА 7 (Псевдоклассы): :hover и :focus-visible для ссылок. -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p class="site-footer__copy">© 2026 Алекс Кодов. Сделано на HTML и CSS.</p>
+      <ul class="site-footer__links">
+        <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://t.me/" target="_blank" rel="noopener">Telegram</a></li>
+        <li><a href="#top">Наверх ↑</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>
