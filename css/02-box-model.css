@@ -3,3 +3,16 @@
    Что здесь пишем: box-sizing, padding, margin, border, border-radius у секций, кнопок, карточек
    ========================================================= */
 
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+}
+
+.container {
+   margin-inline: auto;
+}
+
+.section {
+   padding-block: var(--section-space);
+}
